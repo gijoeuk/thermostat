@@ -44,13 +44,36 @@ describe('Thermostat', function() {
     thermostat.switchPowerSavingModeOn();
     expect(thermostat.isPowerSave()).toEqual(true);
   });
+});
 
-  describe('when power saving mode is on', function() {
-    it('has a maximum temperature of 25', function() {
+describe('when power saving mode is on', function() {
+
+  var thermostat;
+
+  beforeEach(function() {
+    thermostat = new Thermostat();
+  });
+
+  it('has a maximum temperature of 25', function() {
       for (var i = 0; i < 6; i++) {
-        thermostat.up();
+      thermostat.up();
       }
       expect(thermostat.getCurrentTemperature()).toEqual(25);
     })
   })
+
+describe('when power saving mode is off', function() {
+  var thermostat;
+
+  beforeEach(function() {
+    thermostat = new Thermostat();
+  });
+
+  it('has a maximum of 32', function() {
+    thermostat.switchPowerSavingModeOff();
+    for (var i = 0; i < 13; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.getCurrentTemperature()).toEqual(32);
+  });
 });
