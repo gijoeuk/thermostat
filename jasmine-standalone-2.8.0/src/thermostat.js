@@ -1,6 +1,7 @@
 function Thermostat() {
   this.temperature = 20;
   this.MINIMUM_TEMPERATURE = 10;
+  this.powerSave = true
 }
 
 Thermostat.prototype.getCurrentTemperature = function() {
@@ -20,4 +21,12 @@ Thermostat.prototype.down = function() {
 
 Thermostat.prototype.isMinumumTemperature = function() {
   return this.temperature === this.MINIMUM_TEMPERATURE;
+};
+
+Thermostat.prototype.isPowerSave = function() {
+  return this.powerSave === true;
+};
+
+Thermostat.prototype.switchPowerSavingModeOff = function() {
+  this.powerSave = false;
 };
